@@ -1,0 +1,15 @@
+version: '2'
+services:
+  peershake:
+    build: .
+    image: maayanlab/peershake
+    ports:
+      - 80:80
+      - 443:443
+    # specify environment from .env file
+    # env_file: .env
+    environment:
+      BASE_URL: /peershake
+      SECRET_KEY: secret
+      DEBUG: false
+      DATABASE_CONFIG: '{"ENGINE": "django.db.backends.sqlite3", "NAME": "db.sqlite3"}'

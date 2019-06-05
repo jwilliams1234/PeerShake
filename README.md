@@ -20,3 +20,11 @@ source venv/bin/activate
 # Start the server
 python manage.py runserver
 ```
+
+### Deployment
+```bash
+# build docker image
+docker-compose build
+# run docker image
+docker-compose run start
+```
