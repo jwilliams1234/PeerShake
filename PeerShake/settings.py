@@ -11,19 +11,21 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+BASE_URL = os.environ.get('BASE_URL', '')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cs2-i_zc6mi@n-eg7!*ijlqyv%t8^pefzg@!bw00a43g36!yyy'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'cs2-i_zc6mi@n-eg7!*ijlqyv%t8^pefzg@!bw00a43g36!yyy')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = json.loads(os.environ.get('DEBUG', 'true'))
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'PeerShakeWeb',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'django.contrib.staticfiles.templatetags.staticfiles',
+            ],
         },
     },
 ]
@@ -74,10 +80,10 @@ WSGI_APPLICATION = 'PeerShake.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': json.loads(os.environ.get('DATABASE_CONFIG', json.dumps({
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    })))
 }
 
 
@@ -117,4 +123,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/' + BASE_URL + 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

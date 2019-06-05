@@ -1,0 +1,13 @@
+{% extends "peershake/base.html" %}
+
+{% block header %}
+  {{ block.super }}
+  {% with active_page="index" %}
+  {% endwith %}
+{% endblock %}
+
+{% block content %}
+<div>
+  <h1>Peershake</h1>
+</div>
+{% endblock %}

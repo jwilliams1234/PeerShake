@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block head %}
+    <title>{% block title %}Peershake{% endblock %}</title>
+
+    {% block style %}
+      <link rel="stylesheet" href="{% static 'style/base.css' %}" />
+    {% endblock %}
+  {% endblock %}
+</head>
+<body>
+  {% block content %}
+  {% endblock %}
+  {% block script %}
+  {% endblock %}
+</body>
+</html>
