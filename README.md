@@ -17,9 +17,14 @@ pip install -r requirements.txt
 ```bash
 # Activate your python environment
 source venv/bin/activate
+# Initialize the database schema
+python manage.py migrate
 # Start the server
 python manage.py runserver
 ```
+
+### Development
+When database models change, make sure to run `python manage.py makemigrations`.
 
 ### Deployment
 ```bash
