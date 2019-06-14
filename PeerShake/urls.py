@@ -21,4 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path(settings.BASE_URL + '', include('PeerShakeWeb.urls')),
     path(settings.BASE_URL + 'admin/', admin.site.urls),
+    path('users/', include('users.url')),
+    path(settings.BASE_URL + 'accounts/', include('extensions.allauth_ex.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

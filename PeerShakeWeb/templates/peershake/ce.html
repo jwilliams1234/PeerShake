@@ -1,0 +1,46 @@
+{% extends "peershake/base.html" %}
+{% load crispy_forms_tags %}
+ 
+{% block content %}
+<div class = "container">
+    <div class="text-center col-sm-12  border">
+        <h1 class="text-center">PeerShake</h1>
+        <h6 class="text-center">Review For: {{title}}</h6>
+    </div>
+    <div class="col-sm-offset-1 col-sm-12 text-center bg-light">
+        <form method="post" action="/chromeExtension/?title={{title}}&url={{url|urlencode}}" class="text-center border border-light p-5">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    {{form.name|as_crispy_field}}
+                </div>
+                <div class="col-6">
+                    {{form.email|as_crispy_field}}
+                </div>
+            </div>
+            {{form.genComment|as_crispy_field}}
+            {{form.specComment|as_crispy_field}}
+            <button type="submit" class="btn btn-outline-info my-4 btn-block">Submit Review</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+    
+<!-- <form method = "post" action="{% url 'chromeExtension' %}">
+    {%csrf_token%}
+
+    <label for="name">Your Name: </label>
+    <input id="name" type="text" name="name" value="{{name}}">
+
+    <label for="email">Email: </label>
+    <input id="email" type="email" name="email" value="{{email}}">
+
+    <label for="genComment">General Comments: </label>
+    <input id= "genComment" type="textarea" name="genComment" value="{{genComment}}">
+
+    <label for="specComment">Specific Comments: </label>
+    <input id="specComment" type="textarea" name="specComment" value="{{specComment}}">
+
+    <input type="submit" value="OK">
+</form>
+ -->

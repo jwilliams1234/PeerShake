@@ -1,0 +1,112 @@
+{% extends "peershake/base.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{%block content%}
+<div class="container">
+    <h2 class="text-center">PeerShake</h2>
+    <h6 class="text-center">Display Comments for: {{title}}</h6>
+    <div class="border bg-light">
+        <form method="post" action="/commentForm/{{title}}">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-info my-4 btn-block">View Review</button>
+            <a target"_blank" 
+                class="btn btn-outline-info my-4 btn-block"
+                href="{{title}}/all">View All</a>
+    
+        </form>
+    </div>
+</div>
+{%endblock%}
+
+<!--new code-->
+<!-- <div class="container">
+    <div class="text-center">
+            <div class="border-0 card-title">
+                <h2 class="text-center">PeerShake</h2>
+                <h6 class="text-center">Comments For: {{title}}</h6>
+            </div>
+        </div>
+    <div class = "row border-right-0 border-left-0 text-center">
+        {%for obj in main%}
+        <div class="col-sm-12" style="{% if forloop.counter != 1 %}border-top: 1px solid black{% endif %}">
+            <div class="row">
+                <div class = "col-md-6 col-sm-12" style="border-right: 1px solid black">
+                    <h6>{{obj.name}}</h6>
+                </div>
+                <div class = "col-md-6 col-sm-12">
+                    <p>Test 2</p>
+                    <br /> <br />
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class = "col-sm-12 text-center">
+    <h1>PeerShake Review Comments</h1>
+    <h3>Paper: {{title}}</h3>
+    <hr>
+    <div class="col-sm-offset-1 col-sm-12 text-center">
+            <div class="row">
+                    <div class="col-6">
+                        <h3>Reviewers: </h3>
+                        <ul>
+                            {%for obj in main %}
+                            <li>{{obj.name}}</li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                            <h3>Email:</h3>
+                            <ul>
+                                {%for obj in main %}
+                                <li>{{obj.email}}</li>
+                                {%endfor%}
+                            </ul>
+                    </div>
+                </div>
+        <h3>General Comments</h3>
+        <ul>
+            {%for obj in main %}
+            <li>{{obj.genComment}}</li>
+            {%endfor%}
+        </ul>
+        <h3>Specific Comment</h3>
+        <ul>
+            {%for obj in main%}
+            <li>{{obj.specComment}}</li>
+            {%endfor%}
+        </ul>
+    </div>
+</div>
+-->

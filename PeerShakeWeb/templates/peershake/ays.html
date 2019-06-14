@@ -1,0 +1,16 @@
+{% extends "peershake/base.html" %}
+{% load crispy_forms_tags %}
+ 
+{% block content %}
+<div class = "col-sm-12 text-center">
+    <h2>Are You Sure</h2>
+    <hr>
+        <form method="post" action="{% url 'areYouSure' %}">
+            {% csrf_token %}
+            {{aysForm|crispy}}
+
+            <button type="submit" class="btn btn-success">Save Review</button>
+          </form>
+
+</div>
+{% endblock %}

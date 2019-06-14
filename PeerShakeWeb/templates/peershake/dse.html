@@ -1,0 +1,101 @@
+{% extends "peershake/base.html" %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div class="container">
+    <div class="text-center">
+            <div class="border-0 card-title">
+                <h2 class="text-center">PeerShake</h2>
+                <h6 class="text-center">Comments For: {{title}}</h6>
+            </div>
+        </div>
+    <div class = "row border bg-light text-center">
+        <div class="col-sm-12" style="{% if forloop.counter != 1 %}border-top: 1px solid black{% endif %}">
+            <div class="row">
+                <div class = "col-md-6 col-sm-12" style="border-right: 1px solid black">
+                    <h6>{{name}}</h6>
+                    <h6>{{email}}</h6>
+                    <h6>{{doi}}</h6>  
+                </div>
+                <div class = "col-md-6 col-sm-12">
+                    <h6>General Comments</h6>
+                    <p>{{genComment}}</p>
+                    <br /> <br />
+                    <h6>Specific Comments</h6>
+                    <p>{{specComment}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+
+<!--new code-->
+<!-- <div class = "col-sm-12 text-center">
+    <h2>PeerShake Review Comments</h2>
+    <h6>Paper: {{title}}</h6>
+    <hr>
+    <div class="col-sm-offset-1 col-sm-12 text-center">
+        <div class="row">
+            <div class="col-6">
+                <h3>Reviewer</h3>
+                <ul class="list-unstyled">
+                    <li>{{name}}</li>
+                </ul>
+            </div>
+                <div class="col-6">
+                    <h3>Email</h3>
+                    <ul class="list-unstyled">
+                        <li>{{email}}</li>
+                    </ul>
+                </div>
+        </div>
+        <h3>General Comments</h3>
+        <ul class="list-unstyled">
+            <li>{{genComment}}</li>
+        </ul>
+        <h3>Specific Comment</h3>
+        <ul class="list-unstyled">
+            <li>{{specComment}}</li>
+        </ul>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- <div class = "col-sm-12 text-center">
+    <h2>PeerShake Review Comments</h2>
+    <h6>Paper: {{title}}</h6>
+    <hr>
+    <div class="col-sm-offset-1 col-sm-12 text-center">
+        <div class="row">
+            <div class="col-6">
+                <h3>Reviewer</h3>
+                <ul class="list-unstyled">
+                    <li>{{name}}</li>
+                </ul>
+            </div>
+                <div class="col-6">
+                    <h3>Email</h3>
+                    <ul class="list-unstyled">
+                        <li>{{email}}</li>
+                    </ul>
+                </div>
+        </div>
+        <h3>General Comments</h3>
+        <ul class="list-unstyled">
+            <li>{{genComment}}</li>
+        </ul>
+        <h3>Specific Comment</h3>
+        <ul class="list-unstyled">
+            <li>{{specComment}}</li>
+        </ul>
+    </div>
+</div> -->

@@ -1,0 +1,33 @@
+{% extends "peershake/base.html" %}
+{% load crispy_forms_tags %}
+ 
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <div class="border-0 card-title">
+            <h2 class="text-center">PeerShake</h2>
+            <h6 class="text-center">Comments For: {{title}}</h6>
+        </div>
+</div>
+    <div class = "row border bg-light text-center">
+        {%for obj in main%}
+        <div class="col-sm-12" style="{% if forloop.counter != 1 %}border-top: 1px solid black{% endif %}">
+            <div class="row">
+                <div class = "col-md-6 col-sm-12" style="border-right: 1px solid black">
+                    <h6>{{obj.name}}</h6>
+                    <h6>{{obj.email}}</h6>
+                    <h6>{{obj.doi}}</h6>
+                </div>
+                <div class = "col-md-6 col-sm-12">
+                    <h6>General Comments</h6>
+                    <p>{{obj.genComment}}</p>
+                    <br /> <br />
+                    <h6>Special Commments</h6>
+                    <p>{{obj.specComment}}</p>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

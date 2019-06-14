@@ -1,13 +1,72 @@
 {% extends "peershake/base.html" %}
 
 {% block header %}
-  {{ block.super }}
-  {% with active_page="index" %}
-  {% endwith %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+{{ block.super }}
+      {% with active_page="index" %}
+      {% endwith %}
 {% endblock %}
-
 {% block content %}
-<div>
-  <h1>Peershake</h1>
-</div>
+<body>
+    <div id="header">
+        <nav class='navbar navbar-default navbar-stati-top bg-light'>
+          <div class="container-fluid">
+              
+              <div class="navbar-header">    
+                <div style="display: table-row; vertical-align: middle;">
+                  <div stle="display: table-cell; vertical-align: middle; width: 10px">
+                        PeerShake
+                  </div>
+                </div>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="peershake.cloud:35729/accounts/login/">Login</a>
+                </li>
+                <li>
+                  <a href="peershake.cloud:35729/accounts/login/">Sign Up</a>
+                </li>
+              </ul>
+          </div>
+        </nav>
+      </div>
+    </br>
+
+    <div class="col-sm-12 text-center">
+      <h2>Peershake!</h2>
+      <h6>A community-driven peer review system for bioRxiv.
+
+        </h6>
+      </br>
+    </br>
+    </div>
+    <div class="container">
+      <div class="col-sm-offset-1 col=sm-9 text-center">
+          <form class="form" method="GET">
+            <div class= "input-group input=group-lg">
+              <input
+              aria-label="Search"
+              autofocus
+              class="form-control"
+              name="q"
+              placeholder="Search PeerShake for Paper to Review"
+              style="flex: 1 0 auto"
+              type="text"
+              value="{{ simpleMain }}"
+            />
+            <div class="input-group-btn">
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          </form>
+        </div>      
+    </div>
+</body>
 {% endblock %}

@@ -27,8 +27,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'cs2-i_zc6mi@n-eg7!*ijlqyv%t8^pefzg@!b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = json.loads(os.environ.get('DEBUG', 'true'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'peershake.cloud',
+    '127.0.0.1',
+]
 
+SITE_ID=2
 
 # Application definition
 
@@ -38,26 +43,74 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'livereload',
+    # 'rest_auth',
+    # 'rest_auth.registration',
+    # 'extensions.ajax_select_ex',
+    'extensions.allauth_ex',
+    # 'extensions.drf_yasg_ex',
+    # 'extensions.rest_auth_ex',
+    # 'extensions.rest_framework_ex',
+    # 'django_extensions',
+    # 'django_extensions',
+    'bootstrapform',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.orcid',
+    'allauth.socialaccount.providers.globus',
+    # 'rest_framework',
+    # 'rest_framework.authtoken',
     'django.contrib.staticfiles',
     'PeerShakeWeb',
+    'crispy_forms',
+    'sslserver',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+AUTH_USER_MODEL='users.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # TODO: fix pagination handling so these values can be different
+    'PAGE_SIZE': 11,
+    'VIEW_PAGE_SIZE': 11,
+    'SEARCH_PAGE_SIZE': 11,
+    'EXCEPTION_HANDLER': 'extensions.rest_framework_ex.exeptions.handler',
+    'URL_FIELD_NAME': 'get_url',
+}
 
 ROOT_URLCONF = 'PeerShake.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'PeerShakeWeb', 'templates',),
+            os.path.join(BASE_DIR, 'extensions', 'allauth_ex', 'templates',),
+            os.path.join(BASE_DIR, 'extensions', 'ajax_select_ex', 'templates',),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,6 +125,11 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'PeerShake.wsgi.application'
 
@@ -125,3 +183,8 @@ USE_TZ = True
 
 STATIC_URL = '/' + BASE_URL + 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/' + BASE_URL
+LOGOUT_REDIRECT_URL = '/' + BASE_URL
+ACCOUNT_LOGIN_REDIRECT_URL = LOGIN_REDIRECT_URL
+ACCOUNT_LOGOUT_REDIRECT_URL = LOGOUT_REDIRECT_URL
