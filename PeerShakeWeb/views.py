@@ -108,7 +108,7 @@ def displayCommentEmail(request, email,title):
   main = models.ChromeExtension.objects.filter(paperTitleCE__startswith=title)
   mainSub = main.get(email=email)
 
-  context={"title":title,"name":mainSub.name, "genComment":mainSub.genComment, "specComment":mainSub.specComment, "email":mainSub.email, "doi":mainSub.doi}
+  context={"title":title,"name":mainSub.name, "genComment":mainSub.genComment, "specComment":mainSub.specComment, "email":mainSub.email, "datetime":mainSub.datetime}
   return render(request,'peerShake/dse.html', context=context)
 
 def displayAll(request, title):

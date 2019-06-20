@@ -22,4 +22,5 @@ urlpatterns = [
     path(settings.BASE_URL + '', include('PeerShakeWeb.urls')),
     path(settings.BASE_URL + 'admin/', admin.site.urls),
     path(settings.BASE_URL + 'accounts/', include('extensions.allauth_ex.urls')),
+    path(settings.BASE_URL + 'accounts/', include('extensions.rest_auth_ex.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

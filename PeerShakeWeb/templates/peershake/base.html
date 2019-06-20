@@ -3,17 +3,23 @@
 <head>
   {% block head %}
     <title>{% block title %}Peershake{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- {% block style %}
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+    
+    <!-- <link type="text/css" rel="stylesheet" href="https://d33xdlntwy0kbs.cloudfront.net/cshl_custom.css" media="all"> -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.biorxiv.org/sites/default/files/advagg_css/css__VP-_mE1NRW9mMsfzo9frXdVCFpQdMniJfgPHoes2I7Q__WccyXDmD3ZgDP15H5tEbgUKrpXkJz0_3mRJAG18aMHY__mr1GMaAqXcHRISeKQaetqeqpKktBdoUIx9-AEpjLJyY.css" media="all"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    {% block style %}
       <link rel="stylesheet" href="{% static 'style/base.css' %}" />
-    {% endblock %} -->
+    {% endblock %}
   {% endblock %}
 </head>
 <body>
   {% block content %}
   {% endblock %}
   {% block script %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   {% endblock %}
 </body>
 </html>

@@ -34,5 +34,4 @@ class EmailLstForms(forms.Form):
             queryset=models.ChromeExtension.objects.filter(paperTitleCE=title),
             to_field_name='email'
         )
-
-    email = forms.HiddenInput()
+    email = forms.HiddenInput(attrs={'class': 'customFont'} )

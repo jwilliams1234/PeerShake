@@ -26,14 +26,14 @@
     </p>
     <p>
       This should be used in the authorization header of API requests, e.g.
-      <textarea id="teststatus" style="width: 100%;" rows="4" readonly>curl -X GET "https://fairshake.cloud/auth/user/" -H "accept: application/json" -H "Authorization: Token {{ api_key }}"</textarea>
+      <textarea id="teststatus" style="width: 100%;" rows="4" readonly>curl -X GET "https://peershake.cloud/auth/user/" -H "accept: application/json" -H "Authorization: Token {{ api_key }}"</textarea>
       <input type="submit" value="Try Me" onclick="javascript:testapi('{{ api_key }}')">
     </p>
   </div>
 </div>
 <script>
   function testapi(api_key) {
-    fetch("https://fairshake.cloud/auth/user/", {
+    fetch("https://peershake.cloud/auth/user/", {
       headers: {
         Authorization: 'Token ' + api_key,
       }

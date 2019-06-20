@@ -1,5 +1,5 @@
 from rest_framework import routers
-from FAIRshakeHub.views import index
+from PeerShakeWeb.views import index
 
 class APIRootView(routers.APIRootView):
   def get(self, request, *args, **kwargs):

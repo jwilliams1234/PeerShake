@@ -4,10 +4,10 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
   openapi.Info(
-    title='FAIRshake API v2',
+    title='PeerShake API v2',
     default_version='v2',
     description='A web interface for the scoring of biomedical digital objects by user evaluation according to the FAIR data principles: Findability, Accessibility, Interoperability, and Reusability',
-    terms_of_service='https://fairshake.cloud/',
+    terms_of_service='https://peershake.cloud/',
     contact=openapi.Contact(
       email='avi.maayan@mssm.edu',
     ),

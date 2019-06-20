@@ -4,21 +4,52 @@
 
 
 {%block content%}
-<div class="container">
-    <h2 class="text-center">PeerShake</h2>
-    <h6 class="text-center">Display Comments for: {{title}}</h6>
-    <div class="border bg-light">
-        <form method="post" action="/commentForm/{{title}}">
-            {% csrf_token %}
-            {{form|crispy}}
-            <button type="submit" class="btn btn-info my-4 btn-block">View Review</button>
-            <a target"_blank" 
-                class="btn btn-outline-info my-4 btn-block"
-                href="{{title}}/all">View All</a>
-    
-        </form>
+<style>
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.hefty{
+    font-weight: bold;
+}
+.aNewThing{
+    font-size: 14.04px;
+
+}
+.asteriskField{
+    display: none;
+}
+.newSize{
+    font-size: 28px;
+    font-weight: bold;
+}
+.radi{
+    border-radius:0%;
+}
+.someClass{
+    font-weight: bold;
+}
+</style>
+
+
+<body style="background-color: #F0F0F0;">
+    <div >
+        <div class="container">
+            <h2 class="text-center newSize">PeerShake</h2>
+            <p class="aNewThing text-center">A new and open source peer review system for BioRxiv.</p>
+            
+        
+            <div>
+                <form  method="post" action="/commentForm/{{title}}">
+                        {% csrf_token %}                        
+                    <a 
+                        class="btn btn-outline-info my-4 btn-block"
+                        href="{{title}}/all">View All</a>
+            
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+</body>
 {%endblock%}
 
 <!--new code-->

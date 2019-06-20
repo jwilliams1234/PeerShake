@@ -45,13 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'livereload',
-    # 'rest_auth',
-    # 'rest_auth.registration',
-    # 'extensions.ajax_select_ex',
+    'rest_auth',
+    'rest_auth.registration',
+     # 'extensions.ajax_select_ex',
     'extensions.allauth_ex',
     # 'extensions.drf_yasg_ex',
-    # 'extensions.rest_auth_ex',
-    # 'extensions.rest_framework_ex',
+    'extensions.rest_auth_ex',
+    'extensions.rest_framework_ex',
     # 'django_extensions',
     # 'django_extensions',
     'bootstrapform',
@@ -117,6 +117,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.contrib.template.context_processors.request',
             ],
             'builtins': [
                 'django.contrib.staticfiles.templatetags.staticfiles',
@@ -183,7 +184,11 @@ USE_TZ = True
 STATIC_URL = '/' + BASE_URL + 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+LOGIN_URL = '/' + BASE_URL + 'accounts/login/'
+LOGOUT_URL = '/' + BASE_URL + 'accounts/logout/'
+
 LOGIN_REDIRECT_URL = '/' + BASE_URL
 LOGOUT_REDIRECT_URL = '/' + BASE_URL
+
 ACCOUNT_LOGIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 ACCOUNT_LOGOUT_REDIRECT_URL = LOGOUT_REDIRECT_URL

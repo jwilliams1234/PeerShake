@@ -2,6 +2,11 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
+<style>
+p{
+    display: inline-block;
+}
+</style>
 <div class="container">
     <div class="text-center">
             <div class="border-0 card-title">
@@ -15,7 +20,7 @@
                 <div class = "col-md-6 col-sm-12" style="border-right: 1px solid black">
                     <h6>{{name}}</h6>
                     <h6>{{email}}</h6>
-                    <h6>{{doi}}</h6>  
+                    <h6>{{datetime}}</h6>  
                 </div>
                 <div class = "col-md-6 col-sm-12">
                     <h6>General Comments</h6>
