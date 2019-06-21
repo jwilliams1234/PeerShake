@@ -27,12 +27,12 @@
             {%for obj in main%}
             <div class="col-sm-12" style="{% if forloop.counter != 1 %}border-top: 1px solid gray{% endif %}">
                 <div class="row">
-                    <div class = "col-md-6 col-sm-12">
+                    <div class = "col-md-6 col-md-push-6">
                         <p class ='style1 text-left'><span class="style-header">Reviewer:</span> {{obj.name}}</p>
                         <p class ='style1 text-left'><span class="style-header">Email:</span> {{obj.email}}</p>
                         <p class ='style1 text-left'>{{obj.date}}</p>
                     </div>
-                    <div class = "col-md-6 col-sm-12">
+                    <div class = "col-md-6 col-md-push-6">
                         <h6 class="style-header text-left">General Comments</h6>
                         <p class="style1 text-left">{{obj.genComment}}</p>
 
