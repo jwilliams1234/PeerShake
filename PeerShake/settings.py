@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-SITE_ID=2
+SITE_ID=3
 
 # Application definition
 
