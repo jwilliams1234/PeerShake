@@ -2,14 +2,30 @@ version: '2'
 services:
   peershake:
     build: .
-    image: maayanlab/peershake
+    image: maayanlab/peershake:1.0
     ports:
       - 80:80
       - 443:443
-    # specify environment from .env file
-    # env_file: .env
     environment:
-      BASE_URL: /peershake
+      SERVERNAME: amp.pharm.mssm.edu
+      BASE_URL: '/peershake'
       SECRET_KEY: secret
-      DEBUG: false
-      DATABASE_CONFIG: '{"ENGINE": "django.db.backends.sqlite3", "NAME": "db.sqlite3"}'
+      DEBUG: 'false'
+      DATABASE_CONFIG: '{ "ENGINE": "django.db.backends.postgresql", "NAME": "peershake", "USER": "peershake", "PASSWORD": "peershake", "HOST": "postgres", "PORT": "5432" }'
+    volumes:
+      - ./ssl:/ssl
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: peershake
+      POSTGRES_USER: peershake
+      POSTGRES_PASSWORD: peershake
+      POSTGRES_PORT: 5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres:
