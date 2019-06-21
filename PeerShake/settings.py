@@ -25,11 +25,12 @@ BASE_URL = os.environ.get('BASE_URL', '')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'cs2-i_zc6mi@n-eg7!*ijlqyv%t8^pefzg@!bw00a43g36!yyy')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = json.loads(os.environ.get('DEBUG', 'true'))
+DEBUG = json.loads(os.environ.get('DEBUG', 'false'))
 
 ALLOWED_HOSTS = [
     'localhost',
     'peershake.cloud',
+    'amp.pharm.mssm.edu',
     '127.0.0.1',
 ]
 

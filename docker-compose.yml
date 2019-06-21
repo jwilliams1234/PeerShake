@@ -7,9 +7,9 @@ services:
       - 80:80
       - 443:443
     environment:
-      SERVERNAME: amp.pharm.mssm.edu
-      BASE_URL: '/peershake'
-      SECRET_KEY: secret
+      SERVERNAME: 'amp.pharm.mssm.edu'
+      BASE_URL: 'peershake/'
+      SECRET_KEY: 'secret'
       DEBUG: 'false'
       DATABASE_CONFIG: '{ "ENGINE": "django.db.backends.postgresql", "NAME": "peershake", "USER": "peershake", "PASSWORD": "peershake", "HOST": "postgres", "PORT": "5432" }'
     volumes:

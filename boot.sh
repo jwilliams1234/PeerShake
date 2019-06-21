@@ -7,7 +7,7 @@ sslroot=/ssl
 log=$diskroot/error.log
 
 servername=${SERVERNAME}
-webroot=
+webroot=${BASE_URL}
 
 function setup {
 
@@ -78,7 +78,7 @@ http {
         keepalive_timeout 0;
         large_client_header_buffers 8 32k;
 
-        location / {
+        location /${webroot} {
             include            /etc/nginx/uwsgi_params;
             uwsgi_pass         127.0.0.1:8080;
             proxy_redirect     off;
@@ -87,7 +87,7 @@ http {
             proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header   X-Forwarded-Host \$server_name;
         }
-        location /static/ {
+        location /${webroot}static/ {
             alias $diskroot/static/;
         }
     }
