@@ -66,7 +66,7 @@ def chromeExtension(request):
       #change DOI=to necessary code to autoget from webpage
       cE = models.ChromeExtension(paperTitleCE=title, genComment=genComment,specComment=specComment, name=name,email=email,url=url,doi=doi)
       cE.save()
-      return HttpResponseRedirect('/thankyou/')
+      return HttpResponseRedirect('/peershake/thankyou/')
     else:
       print(form.errors)
       return HttpResponse("it didn't work1")
@@ -78,7 +78,7 @@ def chromeExtensionBase(request):
   url = request.GET.get('url')
   context = {"form": forms.ChromeForms, "title":title, "url":url}
   print(title, url)
-  return render(request, 'peerShake/ce.html', context=context)
+  return render(request, 'peershake/ce.html', context=context)
 
 
 def displayCommentForm(request,title):
@@ -92,27 +92,27 @@ def displayCommentForm(request,title):
       return HttpResponseRedirect("/displayCommentEmail"+"/"+email.email+"/"+email.paperTitleCE)
     else:
       context = {"form": forms.ChromeForms, "title":title}
-      return render(request, 'peerShake/ce.html', context=context)
+      return render(request, 'peershake/ce.html', context=context)
   return HttpResponse("it didn't work1")
     
 def displayComment(request, title):
   main = models.ChromeExtension.objects.filter(paperTitleCE__startswith=title)
   form = forms.EmailLstForms(title)
   context={"title": title, "main":main, 'form':form}
-  return render(request, "peerShake/comment.html", context=context)
+  return render(request, "peershake/comment.html", context=context)
 
 def thankyou(request): 
-  return render(request, "peerShake/thankyou.html")
+  return render(request, "peershake/thankyou.html")
 
 def displayCommentEmail(request, email,title):
   main = models.ChromeExtension.objects.filter(paperTitleCE__startswith=title)
   mainSub = main.get(email=email)
 
   context={"title":title,"name":mainSub.name, "genComment":mainSub.genComment, "specComment":mainSub.specComment, "email":mainSub.email, "datetime":mainSub.datetime}
-  return render(request,'peerShake/dse.html', context=context)
+  return render(request,'peershake/dse.html', context=context)
 
 def displayAll(request, title):
   main = models.ChromeExtension.objects.filter(paperTitleCE__startswith=title)
   context={"title":title,"main":main}
 
-  return render(request, "peerShake/all.html", context=context)
+  return render(request, "peershake/all.html", context=context)
