@@ -3,6 +3,9 @@ from django.template import Context
 from . import forms, models
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import CreateView
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
+
+
 
 #beautiful soup is just an awesome name for a python package 
 #urllib not so much, a bit basic iff i'm honest 
@@ -50,22 +53,29 @@ def doiCatcher(url):
     i+=1
   return doi[3:]
 ###############################
+@csrf_exempt
 def chromeExtension(request):
   
   title = request.GET.get('title')
   url = request.GET.get('url')
   doi = doiCatcher(url)
+
+  @csrf_protect
+  def protected_path(request,form):
+    name = form.cleaned_data['name']
+    genComment = form.cleaned_data['genComment']
+    specComment = form.cleaned_data['specComment']
+    email = form.cleaned_data['email']
+    #aYs = email
+    #change DOI=to necessary code to autoget from webpage
+    
+    cE = models.ChromeExtension(paperTitleCE=title, genComment=genComment,specComment=specComment, name=name,email=email,url=url,doi=doi)
+    cE.save()
+      
   if request.method=="POST":
     form = forms.ChromeForms(request.POST)
     if form.is_valid():
-      name = form.cleaned_data['name']
-      genComment = form.cleaned_data['genComment']
-      specComment = form.cleaned_data['specComment']
-      email = form.cleaned_data['email']
-      #aYs = email
-      #change DOI=to necessary code to autoget from webpage
-      cE = models.ChromeExtension(paperTitleCE=title, genComment=genComment,specComment=specComment, name=name,email=email,url=url,doi=doi)
-      cE.save()
+      protected_path(request,form)
       return HttpResponseRedirect('/peershake/thankyou/')
     else:
       print(form.errors)
